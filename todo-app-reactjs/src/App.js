@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import RegisterForm from './components/Register/Register';
+import Header from './components/Header/Header';
+import LoginForm from './components/Login/Login';
+import EditProfileForm from './components/EditProfile/EditProfileForm';
+import TodosPages from './components/Todos/TodosPages';
+
+import { Routes, Route, Navigate } from 'react-router-dom';
+
+import './normalize.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { EDIT_PROFILE_PAGE, LOGIN_PAGE, REGISTER_PAGE, TODOs } from './path/path';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+
+      <Routes>
+        <Route path='/' element={localStorage.getItem("user") ? <Navigate to={TODOs}/> : <Navigate to={LOGIN_PAGE}/>}/>
+        <Route path={LOGIN_PAGE} element={<LoginForm />}/>
+        <Route path={REGISTER_PAGE} element={<RegisterForm />}/>
+        <Route path={EDIT_PROFILE_PAGE} element={<EditProfileForm />}/>
+        <Route path={TODOs} element={<TodosPages />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }
