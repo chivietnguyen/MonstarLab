@@ -28,9 +28,16 @@ export default function RegisterForm() {
 
 	const [errMsg, setErrMsg] = useState();
 	const [success, setSuccess] = useState(false);
+	const [isSubmitting, setIsSubmitting] = useState(false)
 
 	useEffect(() => {
 		autoValidateUsernameWhenInputChange(username, setValidUsername);
+
+		// Whenever dependencies change, errorMessage will be cleared
+		setErrMsg("");
+	}, [username]);
+
+	useEffect(() => {
 		autoValidatePasswordWhenInputChange(password, setValidPassword);
 		autoValidateConfirmPasswordWhenInputChange(
 			password,
@@ -40,7 +47,7 @@ export default function RegisterForm() {
 
 		// Whenever dependencies change, errorMessage will be cleared
 		setErrMsg("");
-	}, [username, password, confirmPassword]);
+	}, [password, confirmPassword]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -48,9 +55,11 @@ export default function RegisterForm() {
 		try {
 			const payload = { username, password };
 
+			setIsSubmitting(true)
 			await api.post(AUTH_REGISTER_URL, payload);
 			setSuccess(true);
 		} catch (err) {
+			setIsSubmitting(false)
 			setErrMsg(err.response.data.error.message);
 		}
 	};
@@ -128,7 +137,7 @@ export default function RegisterForm() {
 						</div>
 					</div>
 
-					<button className="button button--success">Sign up</button>
+					<button className="button button--success" disabled={isSubmitting}>Sign up</button>
 
 					<div className="form__navigation">
 						<p>Already registered?</p>

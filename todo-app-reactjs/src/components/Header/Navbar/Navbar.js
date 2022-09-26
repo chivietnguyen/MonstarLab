@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../../api/axios";
+import { UserInfoContext } from "../../../App";
 import { EDIT_PROFILE_PAGE, getUserUrlWithId, LOGIN_PAGE } from "../../../path/path";
 
 import "./Navbar.css";
 
 export default function Navbar() {
-	const username = JSON.parse(localStorage.getItem("user"))?.username || undefined;
-	const userId = JSON.parse(localStorage.getItem("user"))?.id || undefined;
+	const userInfo = useContext(UserInfoContext)
+	const username = JSON.parse(userInfo())?.username || undefined;
+	const userId = JSON.parse(userInfo())?.id || undefined;
+
 	const navigate = useNavigate();
 
 	const handleDeleteAccount = async () => {

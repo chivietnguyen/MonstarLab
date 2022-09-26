@@ -46,7 +46,7 @@
 .button.button--success {
 	width: 100%;
 	margin-top: 20px;
-	color: white;
+	color: var(--white-color);
 	border: 1px solid var(--success-color);
 	background-color: var(--success-color);
 }
@@ -68,7 +68,7 @@
 
 .instruction {
 	background-color: brown;
-	color: white;
+	color: var(--white-color);
 	text-align: left !important;
 	padding: 5px;
 	border-radius: 8px;

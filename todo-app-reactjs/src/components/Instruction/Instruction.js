@@ -5,8 +5,7 @@ export default function Instruction({conditionToShowInstruction, message}) {
 		<div className={conditionToShowInstruction ? "instruction" : "offscreen"}>
 			<p>
 				<i
-					className="fa-solid fa-circle-info"
-					style={{ paddingRight: "5px" }}
+					className="icon--info fa-solid fa-circle-info"
 				></i>
 				{/* Use more than 6 characters for your password! */}
 				{message}

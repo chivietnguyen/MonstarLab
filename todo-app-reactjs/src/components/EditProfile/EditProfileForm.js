@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import {
 	autoValidatePasswordWhenInputChange,
@@ -11,6 +11,7 @@ import { getUserUrlWithId, LOGIN_PAGE } from "../../path/path";
 
 import "../../form.css";
 import "./EditProfileForm.css";
+import { UserInfoContext } from "../../App";
 
 export default function EditProfileForm() {
 	const [newUsername, setNewUsername] = useState();
@@ -22,8 +23,10 @@ export default function EditProfileForm() {
 	const [newPasswordFocus, setNewPasswordFocus] = useState(false);
 
 	const [errMsg, setErrMsg] = useState();
-
+	const [isSubmitting, setIsSubmitting] = useState(false)
 	const navigate = useNavigate();
+
+	const userInfo = useContext(UserInfoContext)
 
 	useEffect(() => {
 		autoValidateUsernameWhenInputChange(newUsername, setValidNewUsername);
@@ -38,14 +41,17 @@ export default function EditProfileForm() {
 		e.preventDefault();
 
 		try {
-			const userId = JSON.parse(localStorage.getItem("user"))?.id || undefined;
+			const userId = JSON.parse(userInfo())?.id || undefined;
 			const payload = { username: newUsername, newPassword };
+
+			setIsSubmitting(true)
 			await api.patch(getUserUrlWithId(userId), payload);
 
 			localStorage.clear()
 			alert("Edit profile successfully!")
-			setTimeout(navigate(LOGIN_PAGE));
+			navigate(LOGIN_PAGE);
 		} catch (err) {
+			setIsSubmitting(false)
 			setErrMsg(err.response.data.error.message)
 		}
 	};

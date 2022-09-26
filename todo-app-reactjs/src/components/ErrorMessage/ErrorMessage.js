@@ -6,8 +6,7 @@ export default function ErrorMessage({ errMsg }) {
 	return (
 		<div className="errmsg">
 			<i
-				className="fa-solid fa-circle-info"
-				style={{ paddingRight: "5px" }}
+				className="icon--info fa-solid fa-circle-info"
 			></i>
 			{errMsg}
 		</div>

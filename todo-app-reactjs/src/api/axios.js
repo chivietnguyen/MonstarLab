@@ -5,8 +5,9 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use((requestConfig) => {
-	if (localStorage.getItem("user")) {
-		const accessToken = JSON.parse(localStorage.getItem("user")).accessToken;
+	const userInfo = localStorage.getItem("user")
+	if (userInfo) {
+		const accessToken = JSON.parse(userInfo).accessToken;
 		requestConfig.headers = {
 			Authorization: `Bearer ${accessToken}`,
 		};

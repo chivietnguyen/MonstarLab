@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-	AUTH_LOGIN_URL,
-	REGISTER_PAGE,
-	TODOs,
-} from "../../path/path";
+import { AUTH_LOGIN_URL, REGISTER_PAGE, TODO_PATH } from "../../path/path";
 import { Link, useNavigate } from "react-router-dom";
 import {
 	autoValidateUsernameWhenInputChange,
@@ -26,22 +22,31 @@ export default function LoginForm() {
 	const [passwordFocus, setPasswordFocus] = useState(false);
 
 	const [errMsg, setErrMsg] = useState();
+	const [isSubmitting, setIsSubmitting] = useState(false)
 
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		autoValidateUsernameWhenInputChange(username, setValidUsername);
+
+		// Whenever dependencies change, errorMessage will be cleared
+		setErrMsg("");
+	}, [username]);
+
+	useEffect(() => {
 		autoValidatePasswordWhenInputChange(password, setValidPassword);
 
 		// Whenever dependencies change, errorMessage will be cleared
 		setErrMsg("");
-	}, [username, password]);
+	}, [password]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		try {
 			const payload = { username, password };
+			
+			setIsSubmitting(true)
 			const response = await api.post(AUTH_LOGIN_URL, payload);
 
 			const user = {
@@ -51,12 +56,12 @@ export default function LoginForm() {
 			};
 
 			// Save userInfo in localStorage after sign in
-			localStorage.setItem('user', JSON.stringify(user))
+			localStorage.setItem("user", JSON.stringify(user));
 
-			alert("Sign In successfully!")
-			setTimeout(() => navigate(TODOs))
+			alert("Sign In successfully!");
+			navigate(TODO_PATH);
 		} catch (err) {
-			console.log(err);
+			setIsSubmitting(false)
 			setErrMsg(err.response.data.error.message);
 		}
 	};
@@ -112,7 +117,7 @@ export default function LoginForm() {
 					</div>
 				</div>
 
-				<button className="button button--success">Sign In</button>
+				<button className="button button--success" disabled={isSubmitting}>Sign In</button>
 
 				<div className="form__navigation">
 					<p>Create new account?</p>
