@@ -1,0 +1,20 @@
+.todolist__container {
+    margin: 40px 20px;
+    text-align: center;
+    background-color: white;
+}
+
+.todolist__title {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.todolist__header {
+    margin-top: 20px;
+}
+
+.form__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
