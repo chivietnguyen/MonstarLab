@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 
 :root {
+  --white-color: white;
   --primary-color: brown;
   --success-color: cadetblue;
   --primary-font: 'Comfortaa', cursive;
+  --text-color: #666;
 }
 
 body {
@@ -11,7 +13,7 @@ body {
   background-color: beige;
 }
 
-h1 {
+h1, h3 {
   margin: 0;
 }
 
@@ -20,7 +22,3 @@ p {
 }
 
 /* ----------------- */
-
-.row {
-  --bs-gutter-x: 0;
-}
