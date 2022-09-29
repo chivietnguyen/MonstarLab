@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-	baseURL: "https://www.task-manager.api.mvn-training.com",
+	baseURL: process.env.REACT_APP_BASE_URL,
 });
 
 api.interceptors.request.use((requestConfig) => {

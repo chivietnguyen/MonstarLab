@@ -9,7 +9,6 @@ import { api } from "../../api/axios";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Instruction from "../Instruction/Instruction";
 
-import "../../form.css";
 import "./Login.css";
 
 export default function LoginForm() {
@@ -22,7 +21,7 @@ export default function LoginForm() {
 	const [passwordFocus, setPasswordFocus] = useState(false);
 
 	const [errMsg, setErrMsg] = useState();
-	const [isSubmitting, setIsSubmitting] = useState(false)
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const navigate = useNavigate();
 
@@ -45,8 +44,8 @@ export default function LoginForm() {
 
 		try {
 			const payload = { username, password };
-			
-			setIsSubmitting(true)
+
+			setIsSubmitting(true);
 			const response = await api.post(AUTH_LOGIN_URL, payload);
 
 			const user = {
@@ -61,17 +60,15 @@ export default function LoginForm() {
 			alert("Sign In successfully!");
 			navigate(TODO_PATH);
 		} catch (err) {
-			setIsSubmitting(false)
+			setIsSubmitting(false);
 			setErrMsg(err.response.data.error.message);
 		}
 	};
 
 	return (
-		<div className="form__container row">
-			<form
-				onSubmit={handleSubmit}
-				className="form col-lg-4 col-md-6 col-sm-8 col-10"
-			>
+		//  row
+		<div className="form__container">
+			<form className="form" onSubmit={handleSubmit}>
 				<h1 className="form__title">Sign In</h1>
 				<p className="form__description">Sign In and start manage your life!</p>
 
@@ -117,7 +114,9 @@ export default function LoginForm() {
 					</div>
 				</div>
 
-				<button className="button button--success" disabled={isSubmitting}>Sign In</button>
+				<button className="button button--success" disabled={isSubmitting}>
+					Sign In
+				</button>
 
 				<div className="form__navigation">
 					<p>Create new account?</p>

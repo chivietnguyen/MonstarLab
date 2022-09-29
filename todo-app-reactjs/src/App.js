@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import RegisterForm from "./components/Register/Register";
 import Header from "./components/Header/Header";
 import LoginForm from "./components/Login/Login";
@@ -8,9 +8,10 @@ import NotFound from "./components/NotFound/NotFound";
 
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import "./normalize.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./normalize.css";
 import "./App.css";
+import "./form.css";
 import {
 	EDIT_PROFILE_PAGE,
 	LOGIN_PAGE,
@@ -19,14 +20,12 @@ import {
 } from "./path/path";
 
 export const UserInfoContext = React.createContext();
-function userInfo() {
-  return localStorage.getItem("user")
-}
 
 function App() {
-;
-return (
-		<UserInfoContext.Provider value={userInfo}>
+	const [userInfo, setUserInfo] = useState(localStorage.getItem("user"));
+
+	return (
+		<UserInfoContext.Provider value={[userInfo, setUserInfo]}>
 			<div className="App">
 				<Header />
 

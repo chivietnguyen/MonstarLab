@@ -9,7 +9,6 @@ import Instruction from "../Instruction/Instruction";
 import { api } from "../../api/axios";
 import { getUserUrlWithId, LOGIN_PAGE } from "../../path/path";
 
-import "../../form.css";
 import "./EditProfileForm.css";
 import { UserInfoContext } from "../../App";
 
@@ -23,45 +22,46 @@ export default function EditProfileForm() {
 	const [newPasswordFocus, setNewPasswordFocus] = useState(false);
 
 	const [errMsg, setErrMsg] = useState();
-	const [isSubmitting, setIsSubmitting] = useState(false)
+	const [isSubmitting, setIsSubmitting] = useState(false);
 	const navigate = useNavigate();
 
-	const userInfo = useContext(UserInfoContext)
+	const [userInfo, setUserInfo] = useContext(UserInfoContext);
+	setUserInfo(localStorage.getItem("user"));
 
 	useEffect(() => {
 		autoValidateUsernameWhenInputChange(newUsername, setValidNewUsername);
-		autoValidatePasswordWhenInputChange(newPassword, setValidNewPassword);
-
 		// Whenever dependencies change, errorMessage will be cleared
 		setErrMsg("");
-	}, [newUsername, newPassword]);
+	}, [newUsername]);
+
+	useEffect(() => {
+		autoValidatePasswordWhenInputChange(newPassword, setValidNewPassword);
+		// Whenever dependencies change, errorMessage will be cleared
+		setErrMsg("");
+	}, [newPassword]);
 
 	const handleSubmit = async (e) => {
-		
 		e.preventDefault();
 
 		try {
-			const userId = JSON.parse(userInfo())?.id || undefined;
+			const userId = JSON.parse(userInfo)?.id || undefined;
 			const payload = { username: newUsername, newPassword };
 
-			setIsSubmitting(true)
+			setIsSubmitting(true);
 			await api.patch(getUserUrlWithId(userId), payload);
 
-			localStorage.clear()
-			alert("Edit profile successfully!")
+			localStorage.clear();
+			alert("Edit profile successfully!");
 			navigate(LOGIN_PAGE);
 		} catch (err) {
-			setIsSubmitting(false)
-			setErrMsg(err.response.data.error.message)
+			setIsSubmitting(false);
+			setErrMsg(err.response.data.error.message);
 		}
 	};
 
 	return (
-		<div className="form__container row">
-			<form
-				onSubmit={handleSubmit}
-				className="form col-lg-4 col-md-6 col-sm-8 col-10"
-			>
+		<div className="form__container">
+			<form onSubmit={handleSubmit} className="form">
 				<h1 className="form__title">Edit Profile</h1>
 				<p className="form__description">Feel free to edit your profile!</p>
 
@@ -106,7 +106,9 @@ export default function EditProfileForm() {
 					</div>
 				</div>
 
-				<button className="button button--success">Save changes</button>
+				<button className="button button--success" disabled={isSubmitting}>
+					Save changes
+				</button>
 			</form>
 		</div>
 	);

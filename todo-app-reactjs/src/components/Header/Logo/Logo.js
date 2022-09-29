@@ -1,11 +1,12 @@
 import React from "react";
+import { TODO_PATH } from "../../../path/path";
 
-import './Logo.css'
+import styles from "./Logo.module.css";
 
 export default function Logo() {
 	return (
-		<div className="header__logo">
-			<a href="#">Todos</a>
+		<div>
+			<a className={styles.link} href={TODO_PATH}>Todos</a>
 		</div>
 	);
 }

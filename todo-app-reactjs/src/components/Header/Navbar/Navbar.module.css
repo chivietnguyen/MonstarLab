@@ -1,4 +1,4 @@
-.header__navbar {
+.navbar {
 	display: flex;
 	align-items: center;
 }
@@ -13,7 +13,7 @@
 }
 
 /* Show navbar obtions when hover username and avatar */
-.user:hover .navbar__options {
+.user:hover .options {
 	display: block;
 }
 /* -------------------- */
@@ -27,7 +27,7 @@
     height: 20px;
 }
 
-.user__avatar {
+.userAvatar {
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
@@ -35,42 +35,33 @@
 	margin-right: 10px;
 }
 
-.user__avatar img {
+.userAvatarImg {
 	width: 100%;
 }
 
-.user__name {
+.username {
 	color: var(--white-color);
 	font-weight: bold;
 }
 
-.user__name:hover {
+.username:hover {
 	text-decoration: underline;
 }
 
-.button {
-	width: 100%;
-	padding: 10px 20px;
-	font-weight: bold;
-	color: var(--primary-color);
-	border-radius: 10px;
-	border: none;
-}
-
-.button.button--logout {
+.buttonLogout {
 	color: var(--white-color);
 	background-color: transparent;
 	transition: 0.3s ease;
 	cursor: pointer;
 }
 
-.button.button--logout:hover {
+.buttonLogout:hover {
 	color: var(--primary-color);
 	background-color: var(--white-color);
 }
 
 /* Show Options when hover */
-.navbar__options {
+.options {
 	position: absolute;
 	background-color: var(--white-color);
 	border-radius: 10px;
@@ -83,7 +74,7 @@
     display: none;
 }
 
-.navbar__options::before {
+.options::before {
 	content: "";
 	position: absolute;
 	width: 0;
@@ -97,40 +88,40 @@
 	transform: translateX(-50%);
 }
 
-.option__container {
+.optionContainer {
 	width: 100%;
 }
 
-.option__container:nth-child(2) {
+.optionContainer:nth-child(2) {
 	margin-top: 10px;
 }
 
-.button--option {
+.buttonOption {
 	display: flex;
 	align-items: center;
 }
 
-.button--option i {
+.buttonOption i {
 	margin-right: 10px;
 }
 
-.button--edit-profile {
+.buttonEditProfile {
 	color: var(--white-color);
 	background-color: rgb(160, 160, 160);
 	transition: 0.3s ease;
 }
 
-.button--edit-profile:hover {
+.buttonEditProfile:hover {
 	background-color: var(--success-color);
 }
 
-.button--delete-account {
+.buttonDeleteAccount {
 	background-color: var(--primary-color);
 	color: var(--white-color);
 	transition: 0.3s ease;
 }
 
-.button--delete-account:hover {
+.buttonDeleteAccount:hover {
 	opacity: 0.8;
 }
 

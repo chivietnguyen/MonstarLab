@@ -2,14 +2,20 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../../api/axios";
 import { UserInfoContext } from "../../../App";
-import { EDIT_PROFILE_PAGE, getUserUrlWithId, LOGIN_PAGE } from "../../../path/path";
+import {
+	EDIT_PROFILE_PAGE,
+	getUserUrlWithId,
+	LOGIN_PAGE,
+} from "../../../path/path";
 
-import "./Navbar.css";
+import styles from "./Navbar.module.css";
 
 export default function Navbar() {
-	const userInfo = useContext(UserInfoContext)
-	const username = JSON.parse(userInfo())?.username || undefined;
-	const userId = JSON.parse(userInfo())?.id || undefined;
+	const [userInfo, setUserInfo] = useContext(UserInfoContext);
+	setUserInfo(localStorage.getItem("user"));
+
+	const username = JSON.parse(userInfo)?.username || undefined;
+	const userId = JSON.parse(userInfo)?.id || undefined;
 
 	const navigate = useNavigate();
 
@@ -25,38 +31,43 @@ export default function Navbar() {
 	};
 
 	const handleLogout = () => {
-		localStorage.clear()
-		navigate(LOGIN_PAGE)
-	}
+		localStorage.clear();
+		navigate(LOGIN_PAGE);
+	};
 
 	const handleNavigateToEditProfile = () => {
-		navigate(EDIT_PROFILE_PAGE)
-	}
+		navigate(EDIT_PROFILE_PAGE);
+	};
 
 	return (
 		<>
 			{username && (
-				<div className="header__navbar">
-					<div className="user">
-						<div className="user__avatar">
+				<div className={styles.navbar}>
+					<div className={styles.user}>
+						<div className={styles.userAvatar}>
 							<img
+								className={styles.userAvatarImg}
 								src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/1200px-Cat_November_2010-1a.jpg"
 								alt="user avatar"
 							/>
 						</div>
-						<p className="user__name">{username}</p>
+						<p className={styles.username}>{username}</p>
 
-						<div className="navbar__options">
-							<div className="option__container">
-								<button onClick={handleNavigateToEditProfile} className="button button--option button--edit-profile">
+						<div className={styles.options}>
+							<div className={styles.optionContainer}>
+								<button
+									onClick={handleNavigateToEditProfile}
+									className={`button ${styles.buttonOption} ${styles.buttonEditProfile}`}
+								>
 									<i className="fa-solid fa-user-pen"></i>
 									Edit Profile
 								</button>
 							</div>
-							<div className="option__container">
+
+							<div className={styles.optionContainer}>
 								<button
 									onClick={handleDeleteAccount}
-									className="button button--option button--delete-account"
+									className={`button ${styles.buttonOption} ${styles.buttonDeleteAccount}`}
 								>
 									<i
 										className="fa-solid fa-trash"
@@ -68,7 +79,12 @@ export default function Navbar() {
 						</div>
 					</div>
 
-					<button onClick={handleLogout} className="button button--logout">Logout</button>
+					<button
+						onClick={handleLogout}
+						className={`button ${styles.buttonLogout}`}
+					>
+						Logout
+					</button>
 				</div>
 			)}
 		</>

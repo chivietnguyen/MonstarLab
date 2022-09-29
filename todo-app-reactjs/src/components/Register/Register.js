@@ -11,7 +11,6 @@ import NavigateToLoginPage from "./NavigateToLoginPage";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Instruction from "../Instruction/Instruction";
 
-import "../../form.css";
 import "./Register.css";
 
 export default function RegisterForm() {
@@ -28,7 +27,7 @@ export default function RegisterForm() {
 
 	const [errMsg, setErrMsg] = useState();
 	const [success, setSuccess] = useState(false);
-	const [isSubmitting, setIsSubmitting] = useState(false)
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	useEffect(() => {
 		autoValidateUsernameWhenInputChange(username, setValidUsername);
@@ -55,23 +54,23 @@ export default function RegisterForm() {
 		try {
 			const payload = { username, password };
 
-			setIsSubmitting(true)
+			setIsSubmitting(true);
 			await api.post(AUTH_REGISTER_URL, payload);
 			setSuccess(true);
 		} catch (err) {
-			setIsSubmitting(false)
+			setIsSubmitting(false);
 			setErrMsg(err.response.data.error.message);
 		}
 	};
 
 	return (
-		<div className="form__container row">
+		<div className="form__container">
 			{success ? (
 				<NavigateToLoginPage />
 			) : (
 				<form
 					onSubmit={handleSubmit}
-					className="form col-lg-4 col-md-6 col-sm-8 col-10"
+					className="form"
 				>
 					<h1 className="form__title">Sign Up</h1>
 					<p className="form__description">Become our new member!</p>
@@ -137,7 +136,9 @@ export default function RegisterForm() {
 						</div>
 					</div>
 
-					<button className="button button--success" disabled={isSubmitting}>Sign up</button>
+					<button className="button button--success" disabled={isSubmitting}>
+						Sign up
+					</button>
 
 					<div className="form__navigation">
 						<p>Already registered?</p>

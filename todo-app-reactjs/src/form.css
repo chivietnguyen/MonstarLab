@@ -1,11 +1,11 @@
-.row.form__container {
+.form__container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 40px;
 }
 
 .form {
+	margin-top: 40px;
 	text-align: center;
 }
 
@@ -38,11 +38,19 @@
 }
 
 .input.input--error:focus {
-    border: brown;
-    box-shadow: 0 0 0 0.25rem rgba(165, 42, 42, 0.6);
+	border: brown;
+	box-shadow: 0 0 0 0.25rem rgba(165, 42, 42, 0.6);
 }
 
 /* Button Style */
+.button {
+	width: 100%;
+	padding: 10px 20px;
+	font-weight: bold;
+	border-radius: 10px;
+	border: none;
+}
+
 .button.button--success {
 	width: 100%;
 	margin-top: 20px;
@@ -61,7 +69,7 @@
 	display: none;
 }
 
-.errmsg {
+.errMsg {
 	text-align: left;
 	color: brown;
 }
@@ -72,4 +80,39 @@
 	text-align: left !important;
 	padding: 5px;
 	border-radius: 8px;
+}
+
+.icon--info {
+	padding-right: 5px;
+}
+
+/* Responsive */
+@media (max-width: 280px) {
+	.form {
+		width: 90%;
+	}
+}
+
+@media (min-width: 280px) and (max-width: 420px) {
+	.form {
+		width: 80%;
+	}
+}
+
+@media (min-width: 420px) and (max-width: 720px) {
+	.form {
+		width: 60%;
+	}
+}
+
+@media (min-width: 720px) and (max-width: 1280px) {
+	.form {
+		width: 40%;
+	}
+}
+
+@media (min-width: 1280px) {
+	.form {
+		width: 33%;
+	}
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 
-import "./NotFound.css"
+import styles from  "./NotFound.module.css"
 
 export default function NotFound() {
   return (
-    <div className='not-found__container'>
+    <div className={styles.container}>
         <h1>404 Not found!</h1>
     </div>
   )
