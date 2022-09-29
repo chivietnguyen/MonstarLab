@@ -1,0 +1,78 @@
+.container {
+	margin-top: 30px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.listItem {
+	width: 300px;
+	padding: 10px;
+	margin: 5px;
+	border: 1px solid var(--success-color);
+	border-radius: 10px;
+	background-color: var(--list-item-background-color);
+}
+
+.todoHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid var(--text-color);
+}
+
+.todoTitle {
+	text-align: center;
+	flex-grow: 1;
+	color: var(--text-color);
+	font-weight: bold;
+}
+
+.inputEdit {
+	background-color: transparent;
+}
+
+.category {
+	margin-top: 20px;
+}
+
+.categorySelect {
+	padding: 5px;
+	outline: none;
+	border: 1px solid var(--text-color);
+	border-radius: 10px;
+	background-color: transparent;
+}
+
+.categoriesSelected {
+	display: flex;
+	margin-top: 10px;
+}
+
+.selection {
+	padding: 5px;
+	background-color: var(--success-color);
+	margin-right: 10px;
+	border-radius: 10px;
+	color: var(--white-color);
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.date {
+	margin-top: 10px;
+}
+
+.todoFooter {
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 1.2rem;
+}
+
+.todoFooterCheckbox {
+	transform: scale(1.2);
+	cursor: pointer;
+}
