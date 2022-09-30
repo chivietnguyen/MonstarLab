@@ -1,4 +1,4 @@
-.form {
+.todoForm {
 	border: 1px solid;
 	border-radius: 5px;
 	display: flex;
@@ -7,14 +7,14 @@
 	overflow: hidden;
 }
 
-.input {
+.todoInput {
 	width: 100%;
 	padding: 10px;
 	border: none;
 	outline: none;
 }
 
-.button {
+.todoButton {
 	padding: 10px;
 	border: none;
 	outline: none;
@@ -37,4 +37,213 @@
 .icon--trash {
 	color: var(--primary-color);
 	cursor: pointer;
+}
+
+.form__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.form {
+	margin-top: 40px;
+	text-align: center;
+}
+
+.form__title {
+	color: var(--primary-color);
+}
+
+.form__description {
+	margin-top: 15px;
+}
+
+/* Input styles */
+.form__group {
+	margin-top: 15px;
+}
+
+.input {
+	width: 100%;
+	padding: 10px 20px;
+	border-radius: 8px;
+	border: 1px solid var(--success-color);
+	margin: 7px 0;
+	font-family: sans-serif;
+	outline: none;
+}
+
+.input:focus {
+	box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+	border: 1px solid var(--success-color);
+}
+
+.input.input--error:focus {
+	border: brown;
+	box-shadow: 0 0 0 0.25rem rgba(165, 42, 42, 0.6);
+}
+
+/* Button Style */
+.button {
+	width: 100%;
+	padding: 10px 20px;
+	font-weight: bold;
+	border-radius: 10px;
+	border: none;
+}
+
+.button.button--success {
+	width: 100%;
+	margin-top: 20px;
+	color: var(--white-color);
+	border: 1px solid var(--success-color);
+	background-color: var(--success-color);
+}
+
+/* Form Navigation */
+.form__navigation {
+	margin-top: 15px;
+}
+
+/* Error Message && Instruction styles */
+.offscreen {
+	display: none;
+}
+
+.errMsg {
+	text-align: left;
+	color: brown;
+}
+
+.instruction {
+	background-color: brown;
+	color: var(--white-color);
+	text-align: left !important;
+	padding: 5px;
+	border-radius: 8px;
+}
+
+.icon--info {
+	padding-right: 5px;
+}
+
+/* ---------- */
+
+.form__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.form {
+	margin-top: 40px;
+	text-align: center;
+}
+
+.form__title {
+	color: var(--primary-color);
+}
+
+.form__description {
+	margin-top: 15px;
+}
+
+/* Input styles */
+.form__group {
+	margin-top: 15px;
+}
+
+.input {
+	width: 100%;
+	padding: 10px 20px;
+	border-radius: 8px;
+	border: 1px solid var(--success-color);
+	margin: 7px 0;
+	font-family: sans-serif;
+	outline: none;
+}
+
+.input:focus {
+	box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+	border: 1px solid var(--success-color);
+}
+
+.input.input--error:focus {
+	border: brown;
+	box-shadow: 0 0 0 0.25rem rgba(165, 42, 42, 0.6);
+}
+
+/* Button Style */
+.button {
+	width: 100%;
+	padding: 10px 20px;
+	font-weight: bold;
+	border-radius: 10px;
+	border: none;
+}
+
+.button.button--success {
+	width: 100%;
+	margin-top: 20px;
+	color: var(--white-color);
+	border: 1px solid var(--success-color);
+	background-color: var(--success-color);
+}
+
+/* Form Navigation */
+.form__navigation {
+	margin-top: 15px;
+}
+
+/* Error Message && Instruction styles */
+.offscreen {
+	display: none;
+}
+
+.errMsg {
+	text-align: left;
+	color: brown;
+}
+
+.instruction {
+	background-color: brown;
+	color: var(--white-color);
+	text-align: left !important;
+	padding: 5px;
+	border-radius: 8px;
+}
+
+.icon--info {
+	padding-right: 5px;
+}
+
+/* Responsive */
+@media (max-width: 280px) {
+	.form {
+		width: 90%;
+	}
+}
+
+@media (min-width: 280px) and (max-width: 420px) {
+	.form {
+		width: 80%;
+	}
+}
+
+@media (min-width: 420px) and (max-width: 720px) {
+	.form {
+		width: 60%;
+	}
+}
+
+@media (min-width: 720px) and (max-width: 1280px) {
+	.form {
+		width: 40%;
+	}
+}
+
+@media (min-width: 1280px) {
+	.form {
+		width: 33%;
+	}
 }

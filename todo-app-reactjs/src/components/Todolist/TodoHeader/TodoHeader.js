@@ -5,13 +5,15 @@ export default function TodoHeader() {
 		<>
 			<div className={styles.formCreateContainer}>
 				<h2 className={styles.title}>What is your plans?</h2>
-				<form className={`form ${styles.formCreate}`}>
+				<form className={`todoForm ${styles.formCreate}`}>
 					<input
-						className="input"
+						className="todoInput"
 						type="text"
 						placeholder="Create new tasks ..."
 					/>
-					<button className={`button ${styles.buttonCreate}`}>Create</button>
+					<button className={`todoButton ${styles.buttonCreate}`}>
+						Create
+					</button>
 				</form>
 			</div>
 
@@ -43,13 +45,15 @@ export default function TodoHeader() {
 					</div>
 				</div>
 
-				<form className={`form ${styles.formSearch}`}>
+				<form className={`todoForm ${styles.formSearch}`}>
 					<input
-						className="input"
+						className="todoInput"
 						type="text"
 						placeholder="Search by keywords"
 					/>
-					<button className={`button ${styles.buttonSearch}`}>Search</button>
+					<button className={`todoButton ${styles.buttonSearch}`}>
+						Search
+					</button>
 				</form>
 			</div>
 		</>
