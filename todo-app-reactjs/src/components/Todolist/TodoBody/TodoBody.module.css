@@ -1,62 +1,61 @@
 .container {
-	margin-top: 30px;
 	display: flex;
-	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 }
 
-.listItem {
-	width: 300px;
-	padding: 10px;
-	margin: 5px;
-	border: 1px solid var(--success-color);
-	border-radius: 10px;
-	background-color: var(--list-item-background-color);
-}
-
-.todoHeader {
+.listItems {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 100%;
+	margin: 20px 30px 0;
+}
+
+.todoCard {
+	background-color: var(--list-item-background-color);
+	width: 280px;
+	max-width: 300px;
+	padding: 10px;
+	border-radius: 20px;
+	margin: 5px;
+}
+
+.cardHeader {
+	display: flex;
+	align-items: center;
+	flex-grow: 1;
 	border-bottom: 1px solid var(--text-color);
 }
 
-.todoTitle {
+.cardTitle {
 	text-align: center;
 	flex-grow: 1;
-	color: var(--text-color);
-	font-weight: bold;
 }
 
 .inputEdit {
-	background-color: transparent;
+	flex-grow: 1;
+	padding: 5px;
 }
 
-.category {
+.categoryField {
 	margin-top: 20px;
 }
 
-.categorySelect {
-	padding: 5px;
-	outline: none;
-	border: 1px solid var(--text-color);
-	border-radius: 10px;
-	background-color: transparent;
-}
-
-.categoriesSelected {
-	display: flex;
+.categoryContainer {
 	margin-top: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
 }
 
-.selection {
-	padding: 5px;
-	background-color: var(--success-color);
-	margin-right: 10px;
+.category {
 	border-radius: 10px;
+	background-color: var(--text-color);
 	color: var(--white-color);
-	font-weight: bold;
+	padding: 5px;
+	margin-right: 5px;
 	cursor: pointer;
 }
 
@@ -64,15 +63,14 @@
 	margin-top: 10px;
 }
 
-.todoFooter {
+.cardFooter {
 	margin-top: 20px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	font-size: 1.2rem;
 }
 
-.todoFooterCheckbox {
-	transform: scale(1.2);
+.cardCheckbox {
+	scale: 1.2;
 	cursor: pointer;
 }

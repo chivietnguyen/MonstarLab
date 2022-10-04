@@ -1,7 +1,8 @@
-import React from "react";
-import TodoHeader from "./TodoHeader/TodoHeader";
+import React, { useState } from "react";
 import TodoBody from "./TodoBody/TodoBody";
+import TodoHeader from "./TodoHeader/TodoHeader";
 import TodoFooter from "./TodoFooter/TodoFooter";
+import AddTodoPopUp from "./AddTodoPopUp/AddTodoPopUp";
 
 import styles from "./Todolist.module.css";
 
@@ -11,6 +12,7 @@ export default function Todolist() {
 			<TodoHeader />
 			<TodoBody />
 			<TodoFooter />
+			<AddTodoPopUp />
 		</div>
 	);
 }

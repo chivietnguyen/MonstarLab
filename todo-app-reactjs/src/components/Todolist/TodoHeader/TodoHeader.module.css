@@ -1,96 +1,62 @@
-.formCreateContainer {
+.container {
+	margin: 80px 30px 0;
+	position: relative;
+}
+
+.header {
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	flex-wrap: wrap;
-}
-
-.title {
-	color: var(--primary-color);
-}
-
-.formCreate {
-	border-color: var(--primary-color) !important;
-	width: 400px;
-}
-
-.buttonCreate {
-	background-color: var(--primary-color);
-	color: var(--white-color);
-}
-
-.filtersSearchContainer {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	flex-wrap: wrap;
-}
-
-.filtersContainer {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	margin-top: 10px;
-}
-
-.filters {
-	padding: 5px;
-	border: none;
-	outline: none;
-	background-color: transparent;
-	color: var(--success-color);
-	cursor: pointer;
-}
-
-.filterElements {
-	display: flex;
-	align-items: center;
+	align-items: stretch;
 	justify-content: center;
 }
 
-.filterElement {
+.searchBox {
 	display: flex;
-	align-items: center;
-	margin-left: 10px;
-	cursor: pointer;
-	padding: 5px;
-	background-color: var(--success-color);
-	border-radius: 8px;
-	color: var(--white-color);
+	align-items: stretch;
+	justify-content: center;
+	width: 60%;
+	max-width: 600px;
+	border: 1px solid var(--success-color);
+	border-radius: 10px;
+	overflow: hidden;
+	margin-right: 20px;
 }
 
-.formSearch {
-	border-color: var(--success-color) !important;
-	width: 400px;
-	margin-top: 10px;
+.inputSearch {
+	background-color: transparent;
+	border: none !important;
+	margin: 0 !important;
+	box-shadow: none !important;
 }
 
 .buttonSearch {
-	color: var(--white-color);
 	background-color: var(--success-color);
+	border-radius: 0;
+	height: 100%;
+	color: var(--white-color);
 }
 
-@media (max-width: 832px) {
-	.formCreateContainer {
-		flex-direction: column;
-	}
+.buttonAdd {
+	color: var(--white-color);
+	background-color: var(--primary-color);
+	height: 100%;
+}
 
-	.formCreateContainer {
-		flex-direction: column;
-	}
+.footer {
+	margin-top: 20px;
+	display: flex;
+}
 
-	.formSearch {
-		width: 60%;
-		min-width: 300px;
-	}
+.filterItemContainer {
+	display: flex;
+	align-items: center;
+	margin-left: 20px;
+}
 
-	.formCreate {
-		width: 60%;
-		min-width: 300px;
-	}
-
-	.filtersSearchContainer {
-		justify-content: center;
-	}
+.filterItem {
+	padding: 5px 10px;
+	border-radius: 5px;
+	color: var(--text-color);
+	margin-right: 10px;
+	background-color: var(--list-item-background-color);
+	cursor: pointer;
 }
