@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { TodolistContext } from "../Todolist";
 import CategoryInTodoHeader from "./CategoryInTodoHeader";
 
 import styles from "./TodoHeader.module.css";
 
 export default function TodoHeader() {
+	const [showAddTodoPopUp, setShowAddTodoPopUp] = useContext(TodolistContext);
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.header}>
@@ -17,7 +20,10 @@ export default function TodoHeader() {
 				</div>
 
 				<div>
-					<button className={`button ${styles.buttonAdd}`}>
+					<button
+						onClick={() => setShowAddTodoPopUp(true)}
+						className={`button ${styles.buttonAdd}`}
+					>
 						Add Tasks <i className="fa-solid fa-plus"></i>
 					</button>
 				</div>

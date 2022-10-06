@@ -6,13 +6,24 @@ import AddTodoPopUp from "./AddTodoPopUp/AddTodoPopUp";
 
 import styles from "./Todolist.module.css";
 
+export const TodolistContext = React.createContext();
+
 export default function Todolist() {
+	const [showAddTodoPopUp, setShowAddTodoPopUp] = useState(false);
+	const [isAddTask, setIsAddTask] = useState(false);
+
 	return (
 		<div className={styles.container}>
-			<TodoHeader />
-			<TodoBody />
+			<TodolistContext.Provider
+				value={[showAddTodoPopUp, setShowAddTodoPopUp, isAddTask, setIsAddTask]}
+			>
+				<TodoHeader />
+
+				<AddTodoPopUp />
+				<TodoBody />
+			</TodolistContext.Provider>
+
 			<TodoFooter />
-			<AddTodoPopUp />
 		</div>
 	);
 }
